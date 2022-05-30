@@ -1,0 +1,57 @@
+﻿@page "/"
+
+<h1>Sistema para Peliculas</h1>
+
+@*<div>
+    <h3>Peliculas</h3>
+
+    @foreach(var pelicula in ObtenerPeliculas())
+    {
+        <p>Título: @pelicula.Titulo</p>
+        <p>Fecha de Lanzamiento: @pelicula.Lanzamiento.ToString("dd MM yyyy")</p>
+        
+    }
+</div>*@
+
+<div>
+    <h3>Hola</h3>
+
+    <ListadoPeliculas Peliculas="ObtenerPeliculas()"/>
+    
+</div>
+
+<div>
+    <h3>Crear nueva Pelicula Divertida</h3>
+
+    <EjemploTextbox placeholder="Nombre pelicula"/>
+
+</div>
+
+
+
+@code {
+
+    //Se crea una lista de Peliculas a partir de ObtenerPeliculas()
+    private List<Pelicula> ObtenerPeliculas()
+    {
+        return new List<Pelicula>()
+        {
+            new Pelicula() { Titulo = "Moana", Lanzamiento = new DateTime(2014, 5, 1) },
+            new Pelicula() { Titulo = "Transformer", Lanzamiento = new DateTime(2007, 6, 1) },
+            new Pelicula() { Titulo = "SpiderMan", Lanzamiento = new DateTime(2019, 7, 1) }
+
+        };
+    }
+
+    private Pelicula Spiderman { get { return ObtenerPelicula(); } }
+
+
+    private Pelicula ObtenerPelicula()
+    {
+        return new Pelicula() { Titulo = "Moana", Lanzamiento = new DateTime(2014, 5, 1) };
+
+    }
+
+    
+    
+}

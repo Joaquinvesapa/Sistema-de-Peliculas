@@ -1,0 +1,36 @@
+﻿@*Un condicional que verifica cuando se cargan las peliculas*@
+@if (Peliculas == null)
+    {
+        <text>Cargando...</text>
+    }
+    @*Un condicional que verifica si hay peliculas para mostrar*@
+    else if (Peliculas.Count == 0)
+    {
+        <p><b>No hay peliculas para mostrar</b></p>
+    }else@*Si se cumplen las condiciones, se muestran las peliculas con numero de orden gracias al 'for'*@
+    {
+        <input type="checkbox" @bind="MostrarBotones"/>
+
+        @foreach(var pelicula in Peliculas)
+        {
+            <PeliculaIndividual Peliculas="pelicula" MostrarBotones="MostrarBotones"/>
+        }   
+        
+    }
+
+@code {
+    bool MostrarBotones = false;
+
+    //Funcionalidad para hacer asyncrona una funcion
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    await Task.Delay(3000);//Una vez que pasan 3segs, se cargan las peliculas de ObtenerPeliculas() en la variable 'Peliculas'
+    //    Peliculas = ObtenerPeliculas();
+    //} 
+    
+    //Los parametros siempre tienen que ser publicos y deben ser propiedades, por lo que se le agrega el {get;set}
+    [Parameter] public List<Pelicula> Peliculas { get; set; } //Se crea un parametro 'Pelicula' para el componente 'ListadoPeliculas', que almacena una List<Peliculas> con el nombre 'Peliculas' para utilizarlo arriba.
+
+
+    
+}
